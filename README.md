@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CryptoTax.eu
+
+A client-side crypto tax calculator focused on EU jurisdictions. Built with Next.js 14, TypeScript, and Tailwind CSS.
+
+## Features
+
+- **CSV Import** — Auto-detect and parse CSVs from Binance, Kraken, Coinbase, KuCoin
+- **Manual Entry** — Add buy, sell, swap, transfer, and staking reward transactions
+- **Tax Calculations** — FIFO, LIFO, and Weighted Average cost basis methods
+- **EU Tax Rules** — Country-specific calculations for France, Germany, Luxembourg, Belgium, Netherlands
+- **Portfolio Overview** — Current holdings with live prices from CoinGecko
+- **PDF Reports** — Downloadable tax reports with transaction details
+- **Dark Mode** — Professional fintech UI with indigo/purple accents
+- **PWA** — Installable, works offline
+- **Privacy-First** — All data stored locally in IndexedDB, nothing sent to servers
+
+## Country Tax Rules
+
+| Country | Rule |
+|---------|------|
+| France | 30% flat tax (PFU) on all crypto gains |
+| Germany | Tax-free after 1 year holding; otherwise income tax (~26.375%) |
+| Luxembourg | Tax-free after 6 months holding for individuals |
+| Belgium | Generally tax-free (normal management of private wealth) |
+| Netherlands | Box 3 wealth tax on fictional yield (~36% on ~6.17%) |
+
+## Monetization
+
+- **Free**: Up to 25 transactions, 1 tax year
+- **Pro** ($29.99/year): Unlimited transactions, all tax years, PDF reports, all countries
+
+## Tech Stack
+
+- Next.js 14 (App Router) with static export
+- TypeScript
+- Tailwind CSS
+- IndexedDB (via `idb`)
+- PapaParse (CSV parsing)
+- jsPDF + jspdf-autotable (PDF generation)
+- CoinGecko API (price data)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build & Deploy
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Static export in `out/` — deploy to Vercel, Netlify, or any static host.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
