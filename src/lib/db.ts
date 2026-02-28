@@ -23,7 +23,7 @@ function getDB() {
         txStore.createIndex('by-date', 'date');
         txStore.createIndex('by-asset', 'asset');
         txStore.createIndex('by-type', 'type');
-        db.createObjectStore('settings', { keyPath: 'country' });
+        db.createObjectStore('settings');
       },
     });
   }
@@ -68,7 +68,7 @@ export async function getSettings(): Promise<AppSettings> {
 
 export async function saveSettings(settings: AppSettings): Promise<void> {
   const db = await getDB();
-  await db.put('settings', { ...settings, country: 'default' as AppSettings['country'] });
+  await db.put('settings', settings, 'default');
 }
 
 export async function getTransactionCount(): Promise<number> {
